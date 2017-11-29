@@ -2,11 +2,11 @@ package org.template.regression
 
 import org.apache.predictionio.controller.{EmptyEvaluationInfo, Engine, EngineFactory}
 
-case class Query(vector: Array[Double])
+case class Query(vector: Array[String])
 case class PredictedResult(
-  prediction: Double
+  prediction: String
 )
-case class ActualResult(label: Double)
+case class ActualResult(label: String)
 
 object RegressionEngine extends EngineFactory {
   type Type = Engine[TrainingData, EmptyEvaluationInfo, PreparedData, Query, PredictedResult, ActualResult]
