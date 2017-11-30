@@ -34,7 +34,7 @@ class DecisionTreeRegression(val ap: DecisionTreeParams)
   }
 
   override def predict(model: DecisionTreeModel, query: Query): PredictedResult = {
-    val features = Vectors.dense(query.vector)
+    val features = Vectors.fromJson(query.vector)
     val prediction = model.predict(features)
     PredictedResult(prediction)
   }
