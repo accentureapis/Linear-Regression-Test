@@ -4,10 +4,8 @@
   "scripts": {
   },
   "env": {
-    "PIO_EVENTSERVER_ACCESS_KEY": {
-      "generator": "secret"
-    },
-    "PIO_EVENTSERVER_APP_NAME": "regress-test"
+    "PIO_EVENTSERVER_ACCESS_KEY": "kGCP9cQ5558ZlUk3XRKsGomzbrTZpiSuhJsnVwZImemZ3lJoMLhhBl2IGkRBVZRO",
+    "PIO_EVENTSERVER_APP_NAME": "regression"
   },
   "formation": {
   },
