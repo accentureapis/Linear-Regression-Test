@@ -20,7 +20,7 @@ class LinearRegressionWithSGD(val ap: AlgorithmParams)
     def toLabelPoint(item: (String, PropertyMap)): LabeledPoint = item match {
       case (_, properties) =>
         val label = properties.get[Double]("label")
-        val vectors = Vectors.dense(properties.get[Array[Double]]("vector"))
+        val vectors = Vectors.fromJson(properties.get[String]("vector"))
         LabeledPoint(label, vectors)
     }
 
@@ -34,7 +34,7 @@ class LinearRegressionWithSGD(val ap: AlgorithmParams)
   }
 
   override def predict(model: LinearRegressionModel, query: Query): PredictedResult = {
-    val features = Vectors.dense(query.vector)
+    val features = Vectors.fromJson(query.vector)
     val prediction = model.predict(features)
     PredictedResult(prediction)
   }
