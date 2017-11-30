@@ -23,7 +23,7 @@ class DataSource(ep: EmptyParams)
     val events = selectEvents(sc)
     val rdd = events.map {
       case (_, properties) =>
-        Query(properties.get[Array[String,Double]]("vector")) -> ActualResult(properties.get[Double]("label"))
+        Query(properties.get[Array[String]]("vector")) -> ActualResult(properties.get[String]("label"))
     }
     val eval = (TrainingData(events), new EmptyEvaluationInfo(), rdd)
     Seq(eval)
@@ -40,9 +40,9 @@ class DataSource(ep: EmptyParams)
       case (entityId, properties) =>
         val fields = Map(
           "vector" -> JArray(List(
-             JString(properties.get[String]("vendor")),JString(properties.get[String]("item")),JDouble(properties.get[Double]("month")),JDouble(properties.get[Double]("day"))
+             JString(properties.get[String]("vendor")),JString(properties.get[String]("item")),JString(properties.get[String]("month")),JString(properties.get[String]("day"))
            )),
-		   "label" -> JDouble(properties.get[Double]("quantity"))
+		   "label" -> JDouble(properties.get[String]("quantity"))
         )
 
         val propertyMap = PropertyMap(fields, properties.firstUpdated, properties.lastUpdated)
