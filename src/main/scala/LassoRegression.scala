@@ -20,7 +20,7 @@ class LassoRegression(val ap: LassoParams)
     def toLabelPoint(item: (String, PropertyMap)): LabeledPoint = item match {
       case (_, properties) =>
         val label = properties.get[Double]("label")
-        val vectors = Vectors.fromJson(properties.get[String]("vector"))
+        val vectors = Vectors.dense(properties.get[Double]("vector"))
         LabeledPoint(label, vectors)
     }
 
@@ -35,7 +35,7 @@ class LassoRegression(val ap: LassoParams)
   }
 
   override def predict(model: LassoModel, query: Query): PredictedResult = {
-    val features = Vectors.fromJson(query.vector)
+    val features = Vectors.dense(query.vector)
     val prediction = model.predict(features)
     PredictedResult(prediction)
   }
