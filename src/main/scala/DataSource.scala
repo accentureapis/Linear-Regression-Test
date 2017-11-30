@@ -23,7 +23,7 @@ class DataSource(ep: EmptyParams)
     val events = selectEvents(sc)
     val rdd = events.map {
       case (_, properties) =>
-        Query(properties.get[Array[String]]("vector")) -> ActualResult(properties.get[String]("label"))
+        Query(properties.get[String]("vector")) -> ActualResult(properties.get[String]("label"))
     }
     val eval = (TrainingData(events), new EmptyEvaluationInfo(), rdd)
     Seq(eval)
