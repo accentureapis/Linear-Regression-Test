@@ -25,7 +25,7 @@ class DecisionTreeRegression(val ap: DecisionTreeParams)
     def toLabelPoint(item: (String, PropertyMap)): LabeledPoint = item match {
       case (_, properties) =>
         val label = properties.get[String]("label")
-        val vectors = Vectors.fromJson(properties.get[Array[String]]("vector"))
+        val vectors = Vectors.fromJson(properties.get[String]("vector"))
         LabeledPoint(label, vectors)
     }
     val labeledPoints: RDD[LabeledPoint] = data.values.map(toLabelPoint).cache
