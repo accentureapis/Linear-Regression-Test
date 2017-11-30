@@ -24,7 +24,7 @@ class DecisionTreeRegression(val ap: DecisionTreeParams)
   override def train(sc: SparkContext, data: PreparedData): DecisionTreeModel = {
     def toLabelPoint(item: (String, PropertyMap)): LabeledPoint = item match {
       case (_, properties) =>
-        val label = properties.get[String]("label")
+        val label = properties.get[Double]("label")
         val vectors = Vectors.fromJson(properties.get[String]("vector"))
         LabeledPoint(label, vectors)
     }
