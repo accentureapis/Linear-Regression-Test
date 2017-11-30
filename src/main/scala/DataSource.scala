@@ -42,7 +42,7 @@ class DataSource(ep: EmptyParams)
           "vector" -> JArray(List(
              JString(properties.get[String]("vendor")),JString(properties.get[String]("item")),JString(properties.get[String]("month")),JString(properties.get[String]("day"))
            )),
-		   "label" -> JDouble(properties.get[String]("quantity"))
+		   "label" -> JString(properties.get[String]("quantity"))
         )
 
         val propertyMap = PropertyMap(fields, properties.firstUpdated, properties.lastUpdated)
