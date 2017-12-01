@@ -3,7 +3,7 @@ package org.template.regression
 import grizzled.slf4j.Logger
 import org.apache.predictionio.controller.P2LAlgorithm
 import org.apache.spark.SparkContext
-import org.apache.spark.mllib.linalg.{Vector, Vectors}
+import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.regression.{LabeledPoint}
 import org.apache.spark.rdd.RDD
 import org.apache.predictionio.controller.Params
@@ -25,7 +25,7 @@ class DecisionTreeRegression(val ap: DecisionTreeParams)
     def toLabelPoint(item: (String, PropertyMap)): LabeledPoint = item match {
       case (_, properties) =>
         val label = properties.get[Double]("label")
-        val vectors = Vectors.dense(properties.get[Array[String]]("vector"))
+        val vectors = Vectors.fromJson(properties.get[String]("vector"))
         LabeledPoint(label, vectors)
     }
     val labeledPoints: RDD[LabeledPoint] = data.values.map(toLabelPoint).cache
@@ -34,7 +34,7 @@ class DecisionTreeRegression(val ap: DecisionTreeParams)
   }
 
   override def predict(model: DecisionTreeModel, query: Query): PredictedResult = {
-    val features = Vectors.dense(query.vector)
+    val features = Vectors.fromJson(query.vector)
     val prediction = model.predict(features)
     PredictedResult(prediction)
   }
