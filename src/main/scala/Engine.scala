@@ -8,7 +8,7 @@ case class PredictedResult(
 )
 case class ActualResult(label: Double)
 
-object RegressionEngine extends EngineFactory {
+/*object RegressionEngine extends EngineFactory {
   type Type = Engine[TrainingData, EmptyEvaluationInfo, PreparedData, Query, PredictedResult, ActualResult]
 
   def apply(): Type = {
@@ -16,10 +16,19 @@ object RegressionEngine extends EngineFactory {
       classOf[DataSource],
       classOf[Preparator],
       Map(
-        //"tree" -> classOf[DecisionTreeRegression]
-        "randomforest" -> classOf[RandomForestAlgorithm])
+        "tree" -> classOf[DecisionTreeRegression]
       ),
       classOf[Serving]
     )
+  }
+}*/
+object ClassificationEngine extends IEngineFactory {
+  def apply() = {
+    new Engine(
+      classOf[DataSource],
+      classOf[Preparator],
+      Map("naive" -> classOf[NaiveBayesAlgorithm],
+        "randomforest" -> classOf[RandomForestAlgorithm]), 
+      classOf[Serving])
   }
 }
