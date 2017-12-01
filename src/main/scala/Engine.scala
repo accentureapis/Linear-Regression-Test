@@ -16,7 +16,8 @@ object RegressionEngine extends EngineFactory {
       classOf[DataSource],
       classOf[Preparator],
       Map(
-        "tree" -> classOf[DecisionTreeRegression]
+        //"tree" -> classOf[DecisionTreeRegression]
+        "randomforest" -> classOf[RandomForestAlgorithm])
       ),
       classOf[Serving]
     )
