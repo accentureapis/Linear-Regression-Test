@@ -3,7 +3,7 @@ package org.template.regression
 import grizzled.slf4j.Logger
 import org.apache.predictionio.controller.P2LAlgorithm
 import org.apache.spark.SparkContext
-import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.linalg.{Vector, Vectors}
 import org.apache.spark.mllib.regression.{LabeledPoint}
 import org.apache.spark.rdd.RDD
 import org.apache.predictionio.controller.Params
