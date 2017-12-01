@@ -25,7 +25,7 @@ class DecisionTreeRegression(val ap: DecisionTreeParams)
     def toLabelPoint(item: (String, PropertyMap)): LabeledPoint = item match {
       case (_, properties) =>
         val label = properties.get[Double]("label")
-        val vectors = Vectors.fromJson(properties.get[String]("vector"))
+        val vectors = Vectors.dense(properties.get[Array[Double]]("vector"))
         LabeledPoint(label, vectors)
     }
     val labeledPoints: RDD[LabeledPoint] = data.values.map(toLabelPoint).cache
@@ -34,7 +34,7 @@ class DecisionTreeRegression(val ap: DecisionTreeParams)
   }
 
   override def predict(model: DecisionTreeModel, query: Query): PredictedResult = {
-    val features = Vectors.fromJson(query.vector)
+    val features = Vectors.dense(query.vector)
     val prediction = model.predict(features)
     PredictedResult(prediction)
   }
