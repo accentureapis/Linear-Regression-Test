@@ -39,7 +39,7 @@ class DataSource(ep: EmptyParams)
     val events = grades.map {
       case (entityId, properties) =>
         val fields = Map(
-	"Vec2" -> JArray(List(
+	"vec2" -> JArray(List(
              JString(properties.get[String]("vendor")),JString(properties.get[String]("item"))
            )),		
           "vector" -> JArray(List(
