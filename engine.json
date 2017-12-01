@@ -6,7 +6,7 @@
     "params" : {
     }
   },
- /* "algorithms": [
+  "algorithms": [
     {
       "name": "tree",
       "params": {
@@ -15,8 +15,8 @@
         "maxBins": 32
       }
     }
-  ],*/
-  "algorithms": [
+  ]
+/*  "algorithms": [
   {
     "name": "randomforest",
     "params": {
@@ -29,4 +29,4 @@
     }
   }
 ]
-}
+}*/
