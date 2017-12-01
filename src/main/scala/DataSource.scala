@@ -43,7 +43,7 @@ class DataSource(ep: EmptyParams)
              JString(properties.get[String]("vendor")),JString(properties.get[String]("item"))
            )),		
           "vector" -> JArray(List(
-             JDouble(JDouble(properties.get[Double]("month")),JDouble(properties.get[Double]("day"))
+             JDouble(properties.get[Double]("month")),JDouble(properties.get[Double]("day"))
            )),
 		   "label" -> JDouble(properties.get[Double]("quantity"))
         )
