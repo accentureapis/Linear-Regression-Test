@@ -40,7 +40,7 @@ class DataSource(ep: EmptyParams)
       case (entityId, properties) =>
         val fields = Map(
           "vector" -> JArray(List(
-             JString(properties.get[String]("vendor")),JDouble(properties.get[Double]("item")),JDouble(properties.get[Double]("month")),JDouble(properties.get[Double]("day"))
+             JDouble(properties.get[Double]("vendor")),JDouble(properties.get[Double]("item")),JDouble(properties.get[Double]("month")),JDouble(properties.get[Double]("day"))
            )),
 		   "label" -> JDouble(properties.get[Double]("quantity"))
         )
