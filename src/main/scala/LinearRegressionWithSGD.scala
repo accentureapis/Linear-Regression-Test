@@ -20,7 +20,7 @@ class LinearRegressionWithSGD(val ap: AlgorithmParams)
     def toLabelPoint(item: (String, PropertyMap)): LabeledPoint = item match {
       case (_, properties) =>
         val label = properties.get[Double]("label")
-        val vectors = Vectors.fromJson(properties.get[Double]("vector"))
+        val vectors = Vectors.dense(properties.get[Double]("vector"))
         LabeledPoint(label, vectors)
     }
 
